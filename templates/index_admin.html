@@ -1,0 +1,21 @@
+<h1>校園失物招領系統 - 管理員</h1>
+<a href="/logout">登出</a>
+
+<form method="post" action="/add">
+    <input name="name" placeholder="物品名稱" required>
+    <input name="place" placeholder="撿到地點" required>
+    <button type="submit">新增失物</button>
+</form>
+
+<h2>失物清單</h2>
+<ul>
+{% for item in items %}
+  <li>{{ item[1] }} - {{ item[2] }} - {{ item[3] }}
+    {% if item[3] == "未領取" %}
+      <form method="post" action="/claim/{{ item[0] }}">
+          <button type="submit">標記已領取</button>
+      </form>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>
