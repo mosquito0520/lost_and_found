@@ -1,0 +1,12 @@
+<h1>校園失物招領系統</h1>
+<form method="post" action="/add">
+    <input name="name" placeholder="物品名稱" required>
+    <input name="place" placeholder="撿到地點" required>
+    <button type="submit">新增失物</button>
+</form>
+<h2>失物清單</h2>
+<ul>
+{% for item in items %}
+  <li>{{ item[1] }} - {{ item[2] }} - {{ item[3] }}</li>
+{% endfor %}
+</ul>
